@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="p-3">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto mb-3">
+                <h2>{{ template_data.title }}</h2>
+                <hr />
+                <p>
+                    At Grocery Store, we offer Vegetables, Fruits, and different variety of Snacks
+                     ensuring there's fresh fruits and vagetables for everyone. Browse our
+                    extensive collection of , including the Salted creamed tuffle, and hidden
+                    gems. With just a few clicks, you can buy your goods. 
+                    We aslways assure good quality products.
+                </p>
+                <p>
+                    Discover the convenience of our digital platform,
+                    where you have the flexibility to buy Fruits and Vegetables
+                    on your preferred device, whether it's a smart. With our intuitive
+                    search and recommendation features, finding your
+                    next product pick has never been easier.
+                </p>
+            </div>
+            <div class="col-md-6 mx-auto mb-3 text-center">
+                <img src="{% static 'img/hero6_banner.png' %}" class="max-width-100" alt="about" />
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5 py-lg-6">
+        <div class="container">
+            <h2 class="display-5 fw-bold text-center mb-5 text-white">Frequently Asked Questions</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item bg-secondary border-secondary">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How do I create an event?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body bg-dark text-muted">
+                                    Creating an event is simple! Click on "Schedule Event", fill in the event details, set the date and time, and click publish. Your event will be live immediately.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-secondary border-secondary mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Is my data secure?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body bg-dark text-muted">
+                                    Yes, we use industry-leading encryption and security protocols. All your event data is encrypted and backed up regularly.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-secondary border-secondary mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Can I export attendee data?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body bg-dark text-muted">
+                                    Absolutely! You can export attendee lists as CSV or PDF directly from the admin dashboard.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-secondary border-secondary mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What payment methods do you accept?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body bg-dark text-muted">
+                                    We accept all major credit cards, PayPal, and bank transfers. Check our pricing page for more details.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

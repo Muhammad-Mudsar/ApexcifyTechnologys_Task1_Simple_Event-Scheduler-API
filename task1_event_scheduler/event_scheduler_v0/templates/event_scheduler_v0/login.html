@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}User Login{% endblock title %}
+{% block content %}
+
+
+    <!-- Login Container -->
+    <section class="min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-xl bg-secondary">
+                        <div class="card-body px-5 py-4">
+                            <div class="text-center mb-3">
+                                <div class="display-2 mb-3">🔐</div>
+                                <h2 class="fw-bold form-label mb-2">Admin Login</h2>
+                                <p class="text-muted">Access your event dashboard</p>
+                            </div>
+
+                           <form id="loginFor" action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                {% comment %} msg {% endcomment %}
+                             <br />
+                 {% if messages %}
+                    {% for message in messages %}
+                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss aria-labe="Close"></button>
+                      </div>
+                        {% endfor %}
+                          {% endif %}
+
+                                 </div>
+                                <div class="mb-4">
+                                    <label for="email" class="form-label fw-semibold">User Name</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password" class="form-label fw-semibold">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="remember">
+                                        <label class="form-check-label form-label" for="remember"> Remember me  </label>
+                                    </div>
+                                    <a href="#" class="text-primary text-sm">Forgot password?</a>
+                                </div>
+
+                                <button type="submit" class="btn btn-color w-100 btn-sm  py-3 fw-semibold mb-3">
+                                    Sign In
+                                </button>
+
+                                <div class="text-center text-muted text-sm mb-4">
+                                    Don't have an account? <a href="#" class="text-primary fw-semibold">Sign up</a>
+                                </div>
+
+                                <hr class="border-secondary">
+
+                                </form>
+                            </div>
+                    </div>
+
+                    <!-- Additional Links -->
+                    <div class="text-center mt-4">
+                        <p class="text-muted text-sm">
+                            <a href="{% url 'index' %}" class="text-primary text-decoration-none">← Back to Home</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block LiveSCRIPT %}
+<script src="{% static "js/login.js" %}"></script>
+{% endblock LiveSCRIPT %} 
+

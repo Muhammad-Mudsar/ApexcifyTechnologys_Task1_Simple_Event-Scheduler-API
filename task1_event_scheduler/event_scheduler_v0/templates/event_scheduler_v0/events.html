@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <!-- Page Header -->
+    <section class="bg-gradient-dark py-5 py-lg-6 border-bottom border-secondary">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-white mb-2">Discover Events</h1>
+            <p class="lead text-secondary">Find and register for amazing events happening near you</p>
+        </div>
+    </section>
+
+    <!-- Filters & Search -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search events by name, date, or location..." id="searchInput">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="conference">Conference</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="meetup">Meetup</option>
+                        <option value="webinar">Webinar</option>
+                        <option value="networking">Networking</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filter Tags -->
+            <div class="mb-4 d-flex gap-2 flex-wrap">
+                <span class="text-muted small">Filter by:</span>
+                <button class="btn btn-sm btn-outline-secondary active" onclick="filterEvents('all')">All Events</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="filterEvents('upcoming')">Upcoming</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="filterEvents('today')">Today</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="filterEvents('week')">This Week</button>
+            </div>
+        </div>
+    </section>
+
+    {% if messages %}
+<div class="modal fade" id="msgModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var modal = new bootstrap.Modal(document.getElementById('msgModal'));
+  modal.show();
+</script>
+{% endif %}
+    <!-- Events Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4" id="eventsContainer">
+                <!-- Event Cards will be loaded here -->
+                  <!-- Pagination -->
+            {% if events %}
+            {% for event in events %}
+        
+            <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow h-100 d-flex flex-column">
+                <div class="card-body flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-info">{{event.category}}</span>
+                    </div>                    
+                    <h5 class="card-title text-secondary text-dark fw-bold text-reset">{{event.title}}</h5>
+                    <p class="card-text text-muted text-reset text-sm mb-3">{{event.description}}</p>
+
+                    <div class="d-flex flex-column gap-2 mb-4 border-top border-secondary pt-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="text-primary">📅</span>
+                            <span class="text-sm text-muted">{{event.date}}</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="text-primary">👥</span>
+                            <span class="text-sm text-muted">Hosted By Mr. {{event.user}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress mb-3" style="height: 6px;">
+                        <div class="progress-bar bg-primary" role="progressbar" ></div>
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-secondary border-secondary">
+                    <button class="btn btn-primary w-100">Status Now</button>
+                </div>
+            </div>
+            </div>
+             </ul>
+                {% endfor %}
+                {% else %}
+              <!-- Empty State (hidden by default) -->
+       
+        <div class="container" id="emptyState" style="display: none;">
+            <div class="display-1 text-muted mb-3">📭</div>
+            <h3 class="text-white mb-2">No Events Found</h3>
+            <p class="text-secondary mb-4">Try adjusting your search or filters to find more events</p>
+            <a href="schedule-event.html" class="btn btn-primary">Create New Event</a>
+        </div>
+                {% endif %}
+            
+        </div>
+                <!-- !Event Cards will be loaded here -->
+
+            </div>
+    </section>
+
+    
+
+   
+{% endblock content %}
+
+    {% block LiveSCRIPT %}
+    {% comment %} <script src="{% static "js/events.js" %}"></script> {% endcomment %}
+    {% endblock LiveSCRIPT %} 

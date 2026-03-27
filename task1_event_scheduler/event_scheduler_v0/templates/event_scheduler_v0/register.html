@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container py-5">
+
+    <div class="col-md-6 offset-md-3">
+        <form  action="{% url 'signup' %}" method="post">
+        <h3 class="text-start" >Signup!</h3>
+         {% csrf_token %}
+       {% if form.errors %}
+       <div class="alert alert-warning alert-dismisible fade show" role="alert">
+       {% for field in form %}
+     {% if field.errors %}
+      {{field.errors}}
+       {% endif %}
+
+        {% endfor %}
+       </div>
+       {% endif %}
+
+   <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-lable='Close' ></button>
+        {{form.as_p}}
+        <button class="btn btn-color" type="submit" value="register">Register</button>
+    </form>
+    </div>
+</div>
+
+
+{% endblock %}

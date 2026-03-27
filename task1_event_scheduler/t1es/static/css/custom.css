@@ -1,0 +1,23 @@
+.bg-color {
+    background:linear-gradient(180deg,#F4B236, #FB5770,#e60ad4,#2E2E2E);
+    background: -webkit-linear-gradient(180deg,#F4B236, #FB5770,#e60ad4,#2E2E2E) !important;
+    width: 100%;
+    /* border-bottom: 3px solid springgreen; */
+    }    
+
+.wpr-anim-text-visible {
+        background: -webkit-linear-gradient(180deg,#F4B236, #FB5770);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color: transparent;
+    }
+.btn-color{background:linear-gradient(270deg,#F4B236, #FB5770,#e60ad4);}
+
+.img-card-200 {
+    width: fit-content;
+    max-height: 200px;
+}
+
+.img-card-400 {
+width: fit-content;
+max-height: 400px;
+}

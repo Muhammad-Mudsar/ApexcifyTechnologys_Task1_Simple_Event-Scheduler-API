@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Event Stack - Modern Event Scheduling Platform{% endblock title %}
+{% block content %}
+
+ <!-- Hero Section -->
+    <section class="hero-section py-5 py-lg-6 bg-gradient-dark">
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold text-white mb-4" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                        Manage Events Like Never Before
+                    </h1>
+                    <p class="lead text-secondary mb-4">
+                        Create, schedule, and manage events effortlessly. From small meetings to large conferences, EventFlow has you covered.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="{% url 'login' %}" class="btn btn-primary px-5">Get Started</a>
+                        <a href="{% url 'events' %}" class="btn btn-color  px-5 border-0">Browse Events</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-secondary border-0 shadow-lg h-100">
+                        <div class="card-body p-5 d-flex align-items-center justify-content-center" style="min-height: 400px;">
+                            <div class="text-center">
+                                <div class="display-1 text-primary mb-3">📅</div>
+                                <h3 class="fw-bold text-secondary text-reset">Smart Event Management</h3>
+                                <p class="text-muted mt-2">Intuitive interface for seamless event organization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if messages %}
+<div class="modal fade" id="msgModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var modal = new bootstrap.Modal(document.getElementById('msgModal'));
+  modal.show();
+</script>
+{% endif %}
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 py-lg-6">
+        <div class="container">
+            <h2 class="display-5 fw-bold text-center mb-5 text-white text-reset">Why Choose EventFlow?</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary text-white mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                ✓
+                            </div>
+                            <h5 class="card-title fw-bold mb-2 text-secondary text-dark text-reset">Easy Event Creation</h5>
+                            <p class="card-text text-muted">Create and publish events in minutes with our intuitive form builder.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-accent text-dark mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                ⚡
+                            </div>
+                            <h5 class="card-title text-white fw-bold mb-2 text-secondary text-dark text-reset">Real-Time Updates</h5>
+                            <p class="card-text text-muted">Get instant notifications about attendees, registrations, and event changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-success text-white mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                👥
+                            </div>
+                            <h5 class="card-title text-white fw-bold mb-2 text-secondary text-dark text-reset">Attendee Management</h5>
+                            <p class="card-text text-muted">Track registrations, manage attendees, and send bulk communications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-info text-white mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                📊
+                            </div>
+                            <h5 class="card-title text-white fw-bold mb-2 text-secondary text-dark text-reset">Analytics & Reports</h5>
+                            <p class="card-text text-muted">Get detailed insights with beautiful dashboards and comprehensive reports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-warning text-dark mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                🔒
+                            </div>
+                            <h5 class="card-title fw-bold mb-2 text-secondary text-dark text-reset">Secure & Reliable</h5>
+                            <p class="card-text text-muted">Enterprise-grade security with 99.9% uptime guarantee.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-secondary border-0 shadow feature-card h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-danger text-white mb-3 d-inline-flex align-items-center justify-content-center rounded-2">
+                                🌐
+                            </div>
+                            <h5 class="card-title text-white fw-bold mb-2 text-secondary text-dark text-reset">Multi-Platform</h5>
+                            <p class="card-text text-muted">Access your events from any device with our responsive web app.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 py-lg-6 bg-gradient-accent">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4 text-white text-reset">Ready to Transform Your Events?</h2>
+            <p class="lead text-white mb-5">Join thousands of event organizers who trust EventFlow</p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-5">Not Have An account</a>
+                <a href="{% url 'events' %}" class="btn btn-info text-reset btn-lg px-5">Create First Event</a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

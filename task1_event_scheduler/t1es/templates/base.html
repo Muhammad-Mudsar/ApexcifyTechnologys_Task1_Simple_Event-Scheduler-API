@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Event Scheduler | {% block title %} {% endblock title %} </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/globals.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/design-stack.css' %}">
+     {% block liveCSS %} {% endblock liveCSS %} 
+
+   
+</head>
+
+<body>
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'index' %}">
+                <span class="text-primary">Event</span><span class="text-accent">Stack</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <!-- nav -->
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'events' %}">My Events</a>
+                    <a class="nav-link" href="{% url 'create' %}">Create Events</a>
+                    <a class="nav-link" href="{% url 'logout' %}">LogOut ({{ user.username }}) </a>
+                    
+                    {% else %}
+                    <a class="nav-link" href="{% url 'events' %}">Events</a>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'signup' %}"> Sign Up </a>
+                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                     {% endif %}
+                      <li class="nav-item">
+                        <button class="btn btn-sm btn-outline-secondary ms-2 text-reset" id="themeToggle" title="Toggle dark mode">
+                            <i class="bi bi-moon"></i> <span id="themeLabel">Dark</span>
+                        </button>
+                    </li>
+                   
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- dyntRep -->
+    <div>
+        
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-darker bg-gradient-dark border-top border-secondary py-5">
+        <div class="container bg-gradient-dark">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <h5 class="text-white fw-bold mb-3">Event Stack</h5>
+                    <p class="text-muted text-sm">The modern event scheduling platform built for organizers.</p>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none small">Features</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Pricing</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Security</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none small">About</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Blog</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none small">Privacy</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Terms</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none small">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted small mb-0">&copy; 2026 Event Stack. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="text-muted text-decoration-none">Twitter</a>
+                        <a href="#" class="text-muted text-decoration-none">LinkedIn</a>
+                        <a href="#" class="text-muted text-decoration-none">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "js/theme.js" %}"></script>
+    {% block LiveSCRIPT %} {% endblock LiveSCRIPT %} 
+</body>
+</html>

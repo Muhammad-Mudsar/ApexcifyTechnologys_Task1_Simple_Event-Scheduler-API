@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Page Header -->
+    <section class="bg-gradient-dark py-5 py-lg-6 border-bottom border-secondary">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-primary text-reset mb-2">Create New Event</h1>
+            <p class="lead text-secondary">Get your event live in minutes</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5 py-lg-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-lg-auto">
+                   
+                    <!-- Form -->
+                    <form id="eventForm" action="{% url 'create' %}" method="POST">
+                         {% csrf_token %}
+                        <!-- Basic Information -->
+                        <div class="card bg-secondary border-0 shadow-lg mb-4">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold  form-label mb-4">Add New Event Information</h5>
+                                 {% for fom in form %}
+                              <div class="form-group">
+
+                       {{fom.label_tag}} {{fom}} <small class="text-danger"> {{fom.errors| striptags}}</small> <br>
+                                       </div>
+                                {% endfor %}
+                               
+                            </div>
+                        </div>
+                      
+
+                        <!-- Submit -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-sm">Cancel</a>
+                            <button type="submit" class="btn btn-primary btn-sm px-5">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
